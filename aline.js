@@ -1,8 +1,8 @@
 const compositor = require('./compositor.js');
 
-const varianceFunction = "x^5+0.1*x";
+const varianceFunction = "x^10+0.2*x";
 const interpolationFunction = "x";
-const minimumInterpolation = "5";
+const minimumInterpolation = "6";
 const maximumUniformity = "0.5"
 const varianceScalar = "5";
 const inversionChance = "0.3"
@@ -13,6 +13,17 @@ let generationFailed = false;
 let failedAttempts = 0;
 
 function variate (base) {
+  /*let variation = [0];
+  let invert = 1;
+  for (column = 0; column <= horizontalSpaces; column++) {
+    if (Math.random() >= inversionChance) {
+      invert *= -1;
+    }
+    variation.push(variation[variation.length - 1] + invert * varianceScalar * parseFloat(varianceFunction.replace(/x/g, Math.random())));
+  }
+  for (column = 0; column <= horizontalSpaces; column++) {
+    base.push(variation[column] + base[column]);
+  }*/
   let invert = -1;
   if (Math.random() >= inversionChance) {
     invert = 1;
@@ -102,6 +113,17 @@ function attemptGeneration (fileName) {
   let modAgain = [Math.round(verticalSpaces * (1 / varianceScalar))];
 
   generationFailed = false;
+
+  /*variate(fade);
+  variate(mod);
+  variate(burnAgain);
+  variate(modAgain);
+  for (i = 0; i <= horizontalSpaces; i++) {
+    burn.push(fade[i] + mod[i]);
+  }
+  for (i = 0; i <= horizontalSpaces; i++) {
+    fadeAgain.push(burnAgain[i] + modAgain[i]);
+  }*/
 
   for (i = 0; i <= horizontalSpaces; i++) {
     next = variate(fade[fade.length-1]);
