@@ -110,6 +110,7 @@ function attemptGeneration (fileName) {
 
   let fadeAgain = [];
   let burnAgain = [Math.round(Math.random() * verticalSpaces)];
+  burnAgain = [30]
   let modAgain = [Math.round(verticalSpaces * (1 / varianceScalar))];
 
   generationFailed = false;
@@ -168,7 +169,24 @@ function attemptGeneration (fileName) {
   }
 }
 
-for (index = 1; index < 10; index++) {
+let generationTarget = 1;
+let batchLabel = "testBatch";
+if (process.argv.slice(2)[0]) { generationTarget = process.argv.slice(2)[0] }
+if (process.argv.slice(2)[1]) { batchLabel = process.argv.slice(2)[1] }
+generationTarget++;
+
+for (index = 1; index < generationTarget; index++) {
   failedAttempts = 0;
-  attemptGeneration(`output/testBatch${index}.svg`);
+  attemptGeneration(`output/${batchLabel}${index}.svg`);
 }
+
+/*
+let test = [10];
+let next;
+
+for (i = 0; i <= horizontalSpaces; i++) {
+  next = variate(test[test.length-1]);
+  test.push(next);
+}
+
+console.log(test);*/
