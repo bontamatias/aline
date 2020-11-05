@@ -6,7 +6,7 @@ const minimumInterpolation = "6";
 const maximumUniformity = "0.5"
 const varianceScalar = "5";
 const inversionChance = "0.3"
-const verticalSpaces = "70";
+const verticalSpaces = "100";
 const horizontalSpaces = "30";
 
 let generationFailed = false;
